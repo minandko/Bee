@@ -1,0 +1,11 @@
+<odoo>
+    <record id="product_uom_categ_kgm" model="uom.category">
+        <field name="name">Weight</field>
+    </record>
+    <record id="product_uom_kg" model="uom.uom">
+        <field name="category_id" ref="product_uom_categ_kgm"/>
+        <field name="name">kg</field>
+        <field name="factor" eval="1"/>
+        <field name="uom_type">reference</field>
+    </record>
+</odoo>

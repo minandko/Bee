@@ -1,0 +1,96 @@
+<odoo>
+    <odoo>
+        <template id="vehicle_report_template">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <h3 style="text-align: center;"><t t-out="o.env.company.name or ''"/></h3>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td style="width: 15%">Ticket_No</td>
+                                <td style="width: 5%">:</td>
+                                <td style="width: 28%"><span class="mx-4" t-field="o.ref"/></td>
+                                <td style="width: 4%"></td>
+                                <td style="width: 15%">Print Time</td>
+                                <td style="width: 5%">:</td>
+                                <td style="width: 28%"><span class="mx-4" t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/></td>
+                            </tr>
+                            <tr>
+                                <td>Customer_Name</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.customer_id.name"/></td>
+                                <td></td>
+                                <td>Supplier_Name</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.supplier_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td>Vehicle_No</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.full_truck_number"/></td>
+                                <td></td>
+                                <td>Item_Name</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.product_id.name"/></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #000;">
+                                <td colspan="7"></td>
+                            </tr>
+                            <tr>
+                                <td>Gross_Weight</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.gross_weight"/></td>
+                                <td></td>
+                                <td>Gross_Date</td>
+                                <td>:</td>
+                                <t t-if="o.type == 'loading'">
+                                    <td><span class="mx-4" t-field="o.check_out_datetime"/></td>
+                                </t>
+                                <t t-else="">
+                                    <td><span class="mx-4" t-field="o.check_in_datetime"/></td>
+                                </t>
+                            </tr>
+                            <tr>
+                                <td>Tare_Weight</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.tare_weight"/></td>
+                                <td></td>
+                                <td>Tare_Date</td>
+                                <td>:</td>
+                                <t t-if="o.type == 'loading'">
+                                    <td><span class="mx-4" t-field="o.check_in_datetime"/></td>
+                                </t>
+                                <t t-else="">
+                                    <td><span class="mx-4" t-field="o.check_out_datetime"/></td>
+                                </t>
+
+                            </tr>
+                            <tr>
+                                <td>Net_Weight</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.net_weight"/></td>
+                                <td></td>
+                                <td>Charges</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.price"/></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #000;">
+                                <td colspan="7"></td>
+                            </tr>
+                            <tr>
+                                <td>User_Name</td>
+                                <td>:</td>
+                                <td><span class="mx-4" t-field="o.env.user.name"/></td>
+                                <td></td>
+                                <td>Operator_Sign</td>
+                            </tr>
+                            <tr>
+                                <td>Footer_Detail</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </template>
+    </odoo>
+</odoo>

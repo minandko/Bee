@@ -1,0 +1,148 @@
+<odoo>
+
+    <record id="truck_in_out_search" model="ir.ui.view">
+        <field name="name">Search</field>
+        <field name="model">truck.check.in.check.out</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="ref"/>
+                <field name="truck_number"/>
+                <field name="customer_id"/>
+                <field name="supplier_id"/>
+                <field name="product_id"/>
+                <field name="gate"/>
+                <separator/>
+                <filter name="loading" string="Loading" domain="[('type', '=', 'loading')]"/>
+                <filter name="receiving" string="Receiving" domain="[('type', '=', 'unloading')]"/>
+                <separator/>
+                <filter string="Date '&amp;' Time" name="date" domain="[]" context="{'group_by': 'date'}"/>
+                <filter string="Truck Number" name="truck_number" domain="[]" context="{'group_by': 'truck_number'}"/>
+                <filter string="Customer" name="customer" domain="[]" context="{'group_by': 'customer_id'}"/>
+                <filter string="Product" name="product" domain="[]" context="{'group_by': 'product_id'}"/>
+                <filter string="Gate" name="gate" domain="[]" context="{'group_by': 'gate'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_truck_check_in_out_view" model="ir.actions.act_window">
+        <field name="name">Truck In / Out</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="search_view_id" ref="truck_in_out_search"/>
+        <field name="res_model">truck.check.in.check.out</field>
+    </record>
+
+    <record id="view_truck_check_in_out_tree" model="ir.ui.view">
+        <field name="name">truck.check.in.check.out.view.tree</field>
+        <field name="model">truck.check.in.check.out</field>
+        <field name="arch" type="xml">
+            <tree string="Truck In / Out" create="0" edit="0" export_xlsx="false">
+                <field name="type"/>
+                <field name="ref"/>
+                <field name="date"/>
+                <field name="truck_number"/>
+                <field name="customer_id"/>
+                <field name="supplier_id"/>
+                <field name="product_id"/>
+                <field name="tare_weight"/>
+                <field name="gross_weight"/>
+                <field name="net_weight"/>
+                <field name="price" sum="Total"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    <record id="view_truck_out_finder_tree" model="ir.ui.view">-->
+<!--        <field name="name">truck.out.finder.tree</field>-->
+<!--        <field name="model">truck.check.in.check.out</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree string="Truck In / Out" create="0" edit="0" export_xlsx="false">-->
+<!--                <header>-->
+<!--                    <button string="Select"/>-->
+<!--                </header>-->
+<!--                <field name="type"/>-->
+<!--                <field name="ref"/>-->
+<!--                <field name="date"/>-->
+<!--                <field name="truck_number"/>-->
+<!--                <field name="customer_id"/>-->
+<!--                <field name="supplier_id"/>-->
+<!--                <field name="product_id"/>-->
+<!--                <field name="tare_weight"/>-->
+<!--                <field name="gross_weight"/>-->
+<!--                <field name="net_weight"/>-->
+<!--                <field name="price" sum="Total"/>-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="view_truck_check_in_out_form_truck_in_mode" model="ir.ui.view">
+        <field name="name">truck.check.in.check.out.view.truck.in.form</field>
+        <field name="model">truck.check.in.check.out</field>
+        <field name="arch" type="xml">
+            <form string="Truck In / Out" create="0" edit="0">
+                <header>
+                    <field name="type" invisible="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="check_in_datetime" readonly="1"/>
+                            <field name="check_out_datetime" readonly="1"/>
+                            <field name="date" invisible="1"/>
+                            <field name="type"/>
+                            <field name="truck_number"/>
+                            <field name="driver"/>
+                            <field name="gate"/>
+                            <field name="price"/>
+                        </group>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="supplier_id"/>
+                            <field name="product_id"/>
+                            <field name="uom_id"/>
+                            <field name="check_in_weight"/>
+                            <field name="check_out_weight" readonly="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Save" name="button_create" type="object" class="btn-primary"/>
+                        <button special="cancel" data-hotkey="z" string="Close" class="btn-secondary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_truck_check_in_out_form_truck_out_mode" model="ir.ui.view">
+        <field name="name">truck.check.in.check.out.view.truck.out.form</field>
+        <field name="model">truck.check.in.check.out</field>
+        <field name="arch" type="xml">
+            <form string="Truck In / Out" create="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="check_in_datetime" readonly="1"/>
+                            <field name="check_out_datetime" readonly="1"/>
+                            <field name="date" invisible="1"/>
+                            <field name="truck_number" readonly="1"/>
+                            <field name="driver" readonly="1"/>
+                            <field name="price" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="customer_id" readonly="1"/>
+                            <field name="supplier_id" readonly="1"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="uom_id" readonly="1"/>
+                            <field name="check_in_weight" readonly="1"/>
+                            <field name="dummy_check_out_weight" autofocus="autofocus"/>
+                            <field name="dummy_net_weight" readonly="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Save" name="button_write" type="object" class="btn-primary"/>
+                        <button special="cancel" data-hotkey="z" string="Close" class="btn-secondary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

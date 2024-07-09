@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+
+    <record id="track_in" model="res.groups">
+        <field name="name">Track In Permission</field>
+    </record>
+
+    <record id="track_out" model="res.groups">
+        <field name="name">Track Out Permission</field>
+    </record>
+
+
+</odoo>

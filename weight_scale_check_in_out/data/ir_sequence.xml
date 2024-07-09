@@ -1,0 +1,10 @@
+<odoo>
+    <record id="truck_in_out_record_sequence" model="ir.sequence">
+            <field name="name">Truck Records Sequence</field>
+            <field name="code">truck.in.out</field>
+            <field name="prefix">%(y)s%(month)s%(day)s</field>
+            <field name="padding">3</field>
+            <field name="use_date_range">True</field>
+            <field eval="False" name="company_id"/>
+        </record>
+</odoo>

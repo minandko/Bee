@@ -1,0 +1,94 @@
+<odoo>
+
+    <menuitem
+            id="weight_scale_menu_root"
+            name="Weight Scale"
+            web_icon="weight_scale_check_in_out,static/description/icon.png"
+            sequence="99"/>
+    <menuitem
+            id="weight_scale_menu_gate"
+            name="Gate"
+            groups="weight_scale_check_in_out.track_in,weight_scale_check_in_out.track_out"
+            parent="weight_scale_menu_root"
+            action="weight_scale_check_in_out.action_truck_check_in_out_gate"
+            sequence="1"/>
+    <menuitem
+            id="weight_scale_menu_truck_in_out"
+            name="Truck In / Out"
+            parent="weight_scale_menu_root"
+            action="weight_scale_check_in_out.action_truck_check_in_out_view"
+            sequence="2"/>
+
+    <menuitem
+            id="weight_scale_menu_configuration"
+            name="Configuration"
+            groups="base.group_system"
+            parent="weight_scale_menu_root"
+            sequence="3"/>
+
+    <menuitem
+            id="weight_scale_menu_gate_ip_address"
+            name="Gate IP Address"
+            parent="weight_scale_menu_configuration"
+            action="weight_scale_check_in_out.action_gate_ip_address_view"
+            sequence="1"/>
+
+    <menuitem
+            id="weight_scale_menu_master_data"
+            name="Master Data"
+            sequence="100"/>
+    <menuitem
+            id="weight_scale_menu_product_parent"
+            name="Products"
+            parent="weight_scale_menu_master_data"
+            sequence="1"/>
+    <menuitem
+            id="weight_scale_menu_product_child"
+            name="Products"
+            parent="weight_scale_menu_product_parent"
+            action="product.product_template_action_all"
+            sequence="1"/>
+    <menuitem
+            id="weight_scale_menu_product_category"
+            name="Product Categories"
+            parent="weight_scale_menu_product_parent"
+            action="product.product_category_action_form"
+            sequence="2"/>
+    <menuitem
+            id="weight_scale_menu_customer"
+            name="Customers"
+            parent="weight_scale_menu_master_data"
+            action="weight_scale_open_customer"
+            sequence="2"/>
+    <menuitem
+            id="weight_scale_menu_vendor"
+            name="Suppliers"
+            parent="weight_scale_menu_master_data"
+            action="weight_scale_open_vendor"
+            sequence="3"/>
+    <menuitem
+            id="weight_scale_menu_uom_parent"
+            name="UoM"
+            parent="weight_scale_menu_master_data"
+            action="uom.product_uom_form_action"
+            sequence="3"/>
+    <menuitem
+            id="weight_scale_menu_truck_parent"
+            name="Trucks"
+            parent="weight_scale_menu_master_data"
+            action="weight_scale_open_truck_view"
+            sequence="4"/>
+    <menuitem
+            id="weight_scale_menu_uom"
+            name="Units of Measure"
+            parent="weight_scale_menu_uom_parent"
+            action="uom.product_uom_form_action"
+            sequence="1"/>
+    <menuitem
+            id="weight_scale_menu_uom_category"
+            name="Units of Measure Categories"
+            parent="weight_scale_menu_uom_parent"
+            action="uom.product_uom_categ_form_action"
+            sequence="2"/>
+
+</odoo>

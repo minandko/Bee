@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_truck_check_in_check_out_admin,access_truck_check_in_check_out_admin,model_truck_check_in_check_out,base.group_system,1,1,1,1
+access_truck_check_in_check_out_user,access_truck_check_in_check_out_user,model_truck_check_in_check_out,base.group_user,1,1,1,0
+access_truck_out_finder_user,access_truck_out_finder_user,model_truck_out_finder,base.group_user,1,1,1,1
+access_gate_ip_address_admin,access_gate_ip_address_admin,model_gate_ip_address,base.group_system,1,1,1,1
+access_truck_admin,access_truck_admin,model_weight_scale_truck,base.group_system,1,1,1,1
+access_gate_ip_address_user,access_gate_ip_address_user,model_gate_ip_address,base.group_user,1,0,0,0

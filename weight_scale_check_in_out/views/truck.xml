@@ -1,0 +1,61 @@
+<odoo>
+
+    <record id="truck_search" model="ir.ui.view">
+        <field name="name">Search</field>
+        <field name="model">weight.scale.truck</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="full_truck_number"/>
+                <field name="customer_id"/>
+                <field name="gate"/>
+                <field name="driver"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="weight_scale_open_truck_view" model="ir.actions.act_window">
+        <field name="name">Trucks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="res_model">weight.scale.truck</field>
+        <field name="search_view_id" ref="truck_search"/>
+    </record>
+
+    <record id="truck_model_tree_view" model="ir.ui.view">
+        <field name="name">truck.tree</field>
+        <field name="model">weight.scale.truck</field>
+        <field name="arch" type="xml">
+            <tree string="Trucks">
+                <field name="prefix"/>
+                <field name="suffix"/>
+                <field name="full_truck_number"/>
+                <field name="customer_id"/>
+                <field name="driver"/>
+                <field name="gate"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="truck_model_form_view" model="ir.ui.view">
+        <field name="name">truck.form</field>
+        <field name="model">weight.scale.truck</field>
+        <field name="arch" type="xml">
+            <form string="Trucks">
+                <sheet>
+                    <group>
+                        <group>
+                            <label for="prefix" string="Truck Number"/>
+                            <div class="o_row" >
+                                <field name="prefix" style="width:16%;"/>/
+                                <field name="suffix"/>
+                            </div>
+                            <field name="driver"/>
+                            <field name="customer_id"/>
+                            <field name="gate"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

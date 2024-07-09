@@ -1,0 +1,10 @@
+<odoo>
+    <record id="weight_scale_vehicle_report" model="ir.actions.report">
+            <field name="name">Vehicle Record Slip</field>
+            <field name="model">truck.check.in.check.out</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">weight_scale_check_in_out.vehicle_report_template</field>
+            <field name="report_file">weight_scale_check_in_out.vehicle_report_template</field>
+            <field name="binding_model_id" ref="model_truck_check_in_check_out"/>
+        </record>
+</odoo>

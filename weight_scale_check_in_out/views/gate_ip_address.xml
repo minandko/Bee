@@ -1,0 +1,41 @@
+<odoo>
+    <record id="action_gate_ip_address_view" model="ir.actions.act_window">
+        <field name="name">Gate IP Address</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">gate.ip.address</field>
+    </record>
+
+    <record id="view_gate_ip_address_tree" model="ir.ui.view">
+        <field name="name">gate.ip.address.view.tree</field>
+        <field name="model">gate.ip.address</field>
+        <field name="arch" type="xml">
+            <tree string="Gate IP Address">
+                <field name="name"/>
+                <field name="ip_address"/>
+                <field name="port"/>
+                <field name="user"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_gate_ip_address_form" model="ir.ui.view">
+        <field name="name">gate.ip.address.view.truck.in.form</field>
+        <field name="model">gate.ip.address</field>
+        <field name="arch" type="xml">
+            <form string="Gate IP Address">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="ip_address"/>
+                            <field name="port"/>
+                            <field name="user"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

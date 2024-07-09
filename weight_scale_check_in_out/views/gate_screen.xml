@@ -1,0 +1,7 @@
+<odoo>
+    <record id="action_truck_check_in_out_gate" model="ir.actions.client">
+        <field name="name">Gate</field>
+        <field name="tag">truck_check_in_out_gate</field>
+        <field name="target">main</field>
+    </record>
+</odoo>

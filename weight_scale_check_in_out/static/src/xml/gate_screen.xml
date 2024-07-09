@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+    <t t-name="weight_scale_check_in_out.TruckCheckInOutButtons" owl="1">
+
+        <div class="d-flex bg-black-50 flex-column align-items-center justify-content-center h-100 text-center">
+
+            <div t-attf-class="card flex-grow-1 flex-md-grow-0 card pb-3 px-0">
+                 <div class="card-body d-flex flex-column p-0" style="min-width:450px;">
+
+                    <t t-if="state.userImage">
+                        <div class="d-flex align-items-end justify-content-center flex-grow-1 pt-5 pt-md-4 bg-odoo">
+                            <img class="img rounded-circle mb-n5" t-attf-src="/web/image?model=res.users&amp;field=image_1920&amp;id=#{state.userId}" t-att-title="userName" height="80" t-att-alt="userName"/>
+                        </div>
+                    </t>
+
+                     <div class="flex-grow-1 mt-3">
+                         <h1 class="mt-5"><t t-esc="state.userName"/></h1>
+                         <h3>Welcome</h3>
+                    </div>
+
+                     <div class="d-flex justify-content-center">
+                        <button t-if="state.track_in" t-on-click.prevent.stop="truckInOnClick" t-attf-class="o_truck_check_in_icon btn btn-success align-self-center me-3 px-4 py-3 mt-4 mb-2">
+                            <span class="align-middle fs-2 me-3 text-white">Truck IN</span>
+                            <i t-attf-class="fa fa-4x fa-sign-in align-middle"/>
+                        </button>
+                        <button t-if="state.track_out" t-on-click.prevent.stop="truckOutOnClick" t-attf-class="o_truck_check_out_icon btn btn-warning align-self-center ms-3 px-3 py-3 mt-4 mb-2">
+                            <i t-attf-class="fa fa-4x fa-sign-out align-middle"/>
+                            <span class="align-middle fs-2 ms-3">Truck OUT</span>
+                        </button>
+                    </div>
+
+
+
+                 </div>
+            </div>
+
+        </div>
+
+    </t>
+
+</template>
